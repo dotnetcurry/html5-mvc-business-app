@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "SearchProperties";
+}
+
+<style type="text/css">
+    #tblserach{
+        border:double;
+        width:900px;
+    }
+    .c0 {
+      border:double;  
+      width:450px;
+    }
+
+    .c1 {
+      border:double;  
+      width:300px;
+    }
+    #dvcontainer {
+      width:1200px;
+      height:500px;
+      overflow-y:scroll;
+    }
+    #tblserach {
+     border:double;
+     width:1200px;
+    }
+    .c2 {
+     background-color:azure;
+     border:double;
+     width:100px;
+    }
+    .c3 {
+     background-color:yellow;
+        border:double;
+     width:100px;
+
+    }
+</style>
+
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+
+<h2>Search Properties Available for Sale or Rent</h2>
+
+
+<table id="tblserach" class="table table-bordered table-striped">
+    <tr>
+        <td class="c0">
+            Property Type
+        </td>
+        <td class="c0"></td>
+        <td class="c0">
+            Status
+        </td>
+    </tr>
+    <tr>
+        <td class="c1">
+            <select id="lstpropertytype"
+                    data-bind="options:PropertyTypes,optionsCaption:'Select Property Type',value:selectedPropertyType"></select>
+        </td>
+        <td class="c1">
+            <select id="lstfilter"
+                    data-bind="options:Filters,value:SelectedFilter"></select>
+        </td>
+        <td class="c1">
+            <select id="lststatus"
+                    data-bind="options:PropertySaleRentStatus,optionsCaption:'Choose Status',value:selectedSaleRentStatus"></select>
+        </td>
+    </tr>
+</table>
+<input type="button" value="Search" id="btnsearch"
+       data-bind="click:SearchProperties" class="btn glyphicon glyphicon-search" />
+<div id="dvcontainer">
+    <table id="tbldetails" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td class="c3">Property Id</td>
+                <td class="c3">Owner Name</td>
+                <td class="c3">Primary Contact</td>
+                <td class="c3">Secondary Contact</td>
+                <td class="c3">Email</td>
+                <td class="c3">Property Type</td>
+                <td class="c3">Address</td>
+                <td class="c3">No. of BedRooms</td>
+                <td class="c3">Total Rooms</td>
+                <td class="c3">Build up Area</td>
+                <td class="c3">Sale Rent Status</td>
+                <td class="c3">Available Status</td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:SearchedProperties">
+            <tr>
+                <td class="c2">
+                    <span data-bind="text:PropertyId"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:OwnerName "></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:Contact1"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:Contact2"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:Email"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:PropertyType"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:Address"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:BedRoomNo"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:TotalRooms"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:BuildupArea"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:SaleRentStatus"></span>
+                </td>
+                <td class="c2">
+                    <span data-bind="text:Status"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/MyScripts/PropertySearch.js"></script>

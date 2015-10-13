@@ -1,0 +1,246 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+      .c0 {
+        border: double;
+    }
+
+    #dvcontainer {
+        width: 1200px;
+        height: 200px;
+        overflow-x: visible;
+        overflow-y: scroll;
+    }
+
+    .c3 {
+     background-color:yellow;
+        border:double;
+     width:100px;
+
+    }
+</style>
+
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+
+<script type="text/javascript">
+    var GlobalDeclaration = {
+        UserName: function () {
+            return '@ViewBag.CurrentUserEmail';
+        }
+    };
+    // var global = '@ViewBag.CurrentUserEmail';
+</script>
+
+
+
+
+<h2>Index</h2>
+
+<div id="dvcontainer">
+    <table id="tblproperties" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td class="c3">
+                    Property No
+                </td>
+                <td class="c3">
+                    The Property Type
+                </td>
+                <td class="c3">
+                    Address
+                </td>
+                <td class="c3">
+                    No of Bedrooms
+                </td>
+                <td class="c3">
+                    Total Rooms
+                </td>
+                <td class="c3">
+                    Buildup Area
+                </td>
+                <td class="c3">
+                    Description
+                </td>
+                <td class="c3">
+                    Property Status
+                </td>
+                <td class="c3">
+                    Cost
+                </td>
+                <td class="c3">
+                    Property Age
+                </td>
+                <td class="c3">
+                    Status
+                </td>
+                <td class="c3">
+                    Registration Date
+                </td>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:PropertyByOwner">
+            <tr>
+                <td class="c0">
+                    <span data-bind="text:OwnerPropertyId"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:PropertyType"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:Address"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:BedRoomNo"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:TotalRooms"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:PropertyBuildupArea"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:PropertyDescription"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:PropertySaleRentStatus"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:SaleOrRentCost"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:PropertyAge"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:Status"></span>
+                </td>
+                <td class="c0">
+                    <span data-bind="text:RegistrationDate"></span>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<form data-bind="submit:$root.save">
+
+    <div id="dvregisterproperty">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>
+                    Owner Poperty Id:
+                </td>
+                <td>
+                    <input type="text" id="ownerpropertyid"
+                           data-bind="value:$root.OwnerPropertyId" 
+                           class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Property Type:
+                </td>
+                <td>
+                    <select id="lstpropertytypes" data-bind="options:PropertyTypes,optionsCaption:'Choose Property Type',value:SelectedProperty"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Owner Name:
+                </td>
+                <td>
+                    <input type="hidden" id="ownerid" data-bind="value:$root.OwnerId" />
+                    <input type="text" id="ownername"
+                           data-bind="value:$root.OwnerName"
+                           class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>
+                    <textarea id="address" data-bind="value:$root.Address"
+                              required 
+                              class="form-control"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    No. Of BedRooms:
+                </td>
+                <td>
+                    <input type="text" id="noofbedrooms" data-bind="value:$root.BedRoomNo"
+                           required class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total Rooms:
+                </td>
+                <td>
+                    <input type="text" id="noofrooms" data-bind="value:$root.TotalRooms"
+                           required class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Build Up Area:
+                </td>
+                <td>
+                    <input type="text" id="builduparea" data-bind="value:PropertyBuildupArea"
+                           required class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Property Description:
+                </td>
+                <td>
+                    <textarea id="desc" data-bind="value:PropertyDescription"
+                              required class="form-control"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Published For (Sale/Rent):
+                </td>
+                <td>
+                    <select id="lstSaleRent"
+                            data-bind="options:PropertySalesOrRentStatusConstant,optionsCaption:'Choose Sale or Rent',value:SelectedStatus"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    The Expected Cost
+                </td>
+                <td>
+                    <input type="text" id="expectedcost" data-bind="value:$root.SaleOrRentCost"
+                           required class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td> Property Age </td>
+                <td>
+                    <input type="text" id="propertyage" data-bind="value:$root.PropertyAge"
+                           required class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Save" id="btnsave" 
+                            class="btn btn-success"/>
+                </td>
+                <td>
+                    <input type="button" value="Cancel" id="btncancel"
+                           data-bind="click:$root.cancel"
+                           class="btn btn-default" />
+                </td>
+            </tr>
+        </table>
+        <div>
+            <span data-bind="text:$root.ErrorMesage"></span>
+        </div>
+    </div>
+</form>
+<script src="~/Scripts/MyScripts/OwnerPropertyDescription.js"></script>

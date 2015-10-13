@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/MyStyles/Agents.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+<h2>Index</h2>
+<table id="tblagent">
+    <tr>
+        <td class="c0">
+            Agent Id:
+        </td>
+        <td class="c0">
+            <input  type="text" id="agentid" readonly="readonly"
+                   data-bind="value:$root.AgentId"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            Agent Name:
+        </td>
+        <td class="c0">
+            <input type="text" id="agentname" required
+                   data-bind="value:$root.AgentName" />
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            Agent Address:
+        </td>
+        <td class="c0">
+            <textarea id="agentaddress" required 
+                      data-bind="value:$root.Address"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            Company Name:
+        </td>
+        <td class="c0">
+            <input type="text" id="agentcompany" required
+                   data-bind="value:$root.CompanyName" />
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            Office Address:
+        </td>
+        <td class="c0">
+            <input type="text" id="agentofficeaddress" required data-bind="value:$root.OfficeAddress" />
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            City:
+        </td>
+        <td class="c0">
+            <input type="text" id="agentcity" required
+                   data-bind="value:$root.City" />
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            State:
+        </td>
+        <td class="c0">
+            <input type="text" id="agentstate" required
+                   data-bind="value:$root.State" />
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            Personal Contact:
+        </td>
+        <td class="c0">
+            <input type="text" id="agentcontact1" required
+                   data-bind="value:$root.Contact1" />
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            Office Contact:
+        </td>
+        <td class="c0">
+            <input type="text" id="agentcontact2" required
+                   data-bind="value:$root.Contact2" />
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            Email:
+        </td>
+        <td class="c0">
+            <input type="email" id="agentemail" required
+                   data-bind="value:$root.Email" />
+        </td>
+    </tr>
+    <tr>
+        <td class="c0">
+            Web Site:
+        </td>
+        <td class="c0">
+            <input type="url" id="agentwebsite" required
+                   data-bind="value:$root.WebSite" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" id="btnsave" value="Save"
+                    data-bind="click:$root.save"/>
+        </td>
+        <td>
+            <input type="button" id="btncancel" value="Cancel"
+                   data-bind="click:$root.cancel" />
+        </td>
+    </tr>
+</table>
+<script src="~/Scripts/MyScripts/Agents.js"></script>
+

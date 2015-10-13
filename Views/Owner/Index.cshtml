@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+ 
+<link href="~/Content/MyStyles/Owner.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    var GlobalDeclaration = {
+       UserName:function(){
+           return '@ViewBag.CurrentUserEmail';
+        }
+    };
+   // var global = '@ViewBag.CurrentUserEmail';
+</script>
+
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+
+<form data-bind="submit:$root.save" >
+
+    <table id="tblowner" class="table table-bordered table-striped">
+        <tr>
+            <td class="c0">OwnerId</td>
+            <td class="c0">
+                <input type="text" id="ownerid" readonly="readonly"
+                       data-bind="value:$root.OwnerId"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">Name</td>
+            <td class="c0">
+                <input type="text" id="ownername" required
+                       data-bind="value:$root.OwnerName"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">Address</td>
+            <td class="c0">
+                <textarea id="owneraddress" required
+                          data-bind="value:$root.Address"
+                          class="form-control"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">City</td>
+            <td class="c0">
+                <input type="text" id="ownercity" required
+                       data-bind="value:$root.City"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">Email</td>
+            <td class="c0">
+                <input type="text" id="owneremail" readonly="readonly"
+                       data-bind="value:$root.Email"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">Primary Contact</td>
+            <td class="c0">
+                <input type="text" id="ownercontact1" required
+                       data-bind="value:$root.Contact1"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">Secondary Contact</td>
+            <td class="c0">
+                <input type="text" id="ownercontact2" required
+                       data-bind="value:$root.Contact2"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">
+                <button id="btnsave" type="submit" class="btn btn-success">Save</button>
+            </td>
+            <td class="c0">
+                <button id="btncancel"
+                        data-bind="click:$root.cancel"
+                        class="btn btn-default">
+                    Clear
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+<div data-bind="visible:$data.OwnerId()>0">
+    @Html.ActionLink("Continue to Register Property", "Index",
+                            "OwnerPropertyDescription")
+</div>
+<div id="dverror">
+    <span data-bind="text:$root.ErrorMessage"></span>
+</div>
+<script src="~/Scripts/MyScripts/Owners.js"></script>
+    

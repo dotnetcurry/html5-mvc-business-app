@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+ 
+<h2>Index</h2>
+<link href="~/Content/MyStyles/Customers.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+
+<script type="text/javascript">
+    var GlobalDeclarationCust = {
+        UserName: function () {
+            return '@ViewBag.CurrentUserEmail';
+        }
+    };
+    // var global = '@ViewBag.CurrentUserEmail';
+</script>
+
+<form data-bind="submit:$root.save">
+
+    <table id="tblcustomer" class="table table-bordered table-striped">
+        <tr>
+            <td class="c0">Customer Id</td>
+            <td class="c0">
+                <input type="text" id="custid" 
+                       data-bind="value:$root.CustomerId" 
+                       required readonly="readonly" 
+                       class="form-control"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="c0">Name</td>
+            <td class="c0">
+                <input type="text" id="custname"
+                       required data-bind="value:$root.CustomerName"
+                       class="form-control" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="c0">Address</td>
+            <td class="c0">
+                <input type="text" id="custaddr"
+                       required data-bind="value:Address"
+                       class="form-control" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="c0">City</td>
+            <td class="c0">
+                <input type="text" id="custcity"
+                       required data-bind="value:City"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">Email</td>
+            <td class="c0">
+                <input type="email" id="custename" readonly
+                       data-bind="value:Email"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">Primary Contact:</td>
+            <td class="c0">
+                <input type="text" id="custcontact1"
+                       required data-bind="value:Contact1"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">Secondary Contact</td>
+            <td class="c0">
+                <input type="text" id="custcontact2"
+                       required data-bind="value:Contact2"
+                       class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td class="c0">
+                <button id="btnsave" type="submit" class="btn btn-success">Save</button>
+            </td>
+            <td class="c0">
+                <button id="btnsave" data-bind="click:$root.clear"
+                        class="btn btn-primary">
+                    Cancel
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+<div data-bind="visible:$data.CustomerId()>0">
+    @Html.ActionLink("Continue to Search Property", "SearchProperties",
+                            "Customer")
+</div>
+
+<script src="~/Scripts/MyScripts/Customers.js"></script>

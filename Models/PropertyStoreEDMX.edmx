@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PropertyStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Contact1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contact2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnerInfo">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="OwnerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contact2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnerPropertyDescription">
+          <Key>
+            <PropertyRef Name="OwnerPropertyId" />
+          </Key>
+          <Property Name="OwnerPropertyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PropertyType" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BedRoomNo" Type="int" Nullable="false" />
+          <Property Name="TotalRooms" Type="int" Nullable="false" />
+          <Property Name="PropertyBuildupArea" Type="int" Nullable="false" />
+          <Property Name="PropertyDescription" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PropertySaleRentStatus" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SaleOrRentCost" Type="int" Nullable="false" />
+          <Property Name="PropertyAge" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__OwnerProp__Owner__5EBF139D">
+          <End Role="OwnerInfo" Type="Self.OwnerInfo" Multiplicity="1" />
+          <End Role="OwnerPropertyDescription" Type="Self.OwnerPropertyDescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerInfo">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="OwnerPropertyDescription">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PropertyStoreModelStoreContainer">
+          <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnerInfo" EntityType="Self.OwnerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnerPropertyDescription" EntityType="Self.OwnerPropertyDescription" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__OwnerProp__Owner__5EBF139D" Association="Self.FK__OwnerProp__Owner__5EBF139D">
+            <End Role="OwnerInfo" EntitySet="OwnerInfo" />
+            <End Role="OwnerPropertyDescription" EntitySet="OwnerPropertyDescription" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PropertyStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="OwnerInfo">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="OwnerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OwnerPropertyDescriptions" Relationship="PropertyStoreModel.FK__OwnerProp__Owner__5EBF139D" FromRole="OwnerInfo" ToRole="OwnerPropertyDescription" />
+        </EntityType>
+        <EntityContainer Name="PropertyStoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerInfoes" EntityType="Self.CustomerInfo" />
+          <EntitySet Name="OwnerInfoes" EntityType="Self.OwnerInfo" />
+          <EntitySet Name="OwnerPropertyDescriptions" EntityType="PropertyStoreModel.OwnerPropertyDescription" />
+          <AssociationSet Name="FK__OwnerProp__Owner__5EBF139D" Association="PropertyStoreModel.FK__OwnerProp__Owner__5EBF139D">
+            <End Role="OwnerInfo" EntitySet="OwnerInfoes" />
+            <End Role="OwnerPropertyDescription" EntitySet="OwnerPropertyDescriptions" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="OwnerPropertyDescription">
+          <Key>
+            <PropertyRef Name="OwnerPropertyId" />
+          </Key>
+          <Property Name="OwnerPropertyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyType" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BedRoomNo" Type="Int32" Nullable="false" />
+          <Property Name="TotalRooms" Type="Int32" Nullable="false" />
+          <Property Name="PropertyBuildupArea" Type="Int32" Nullable="false" />
+          <Property Name="PropertyDescription" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PropertySaleRentStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SaleOrRentCost" Type="Int32" Nullable="false" />
+          <Property Name="PropertyAge" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OwnerInfo" Relationship="PropertyStoreModel.FK__OwnerProp__Owner__5EBF139D" FromRole="OwnerPropertyDescription" ToRole="OwnerInfo" />
+        </EntityType>
+        <Association Name="FK__OwnerProp__Owner__5EBF139D">
+          <End Type="PropertyStoreModel.OwnerInfo" Role="OwnerInfo" Multiplicity="1" />
+          <End Type="PropertyStoreModel.OwnerPropertyDescription" Role="OwnerPropertyDescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerInfo">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="OwnerPropertyDescription">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PropertyStoreModelStoreContainer" CdmEntityContainer="PropertyStoreEntities">
+          <EntitySetMapping Name="CustomerInfoes">
+            <EntityTypeMapping TypeName="PropertyStoreModel.CustomerInfo">
+              <MappingFragment StoreEntitySet="CustomerInfo">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+                <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerInfoes">
+            <EntityTypeMapping TypeName="PropertyStoreModel.OwnerInfo">
+              <MappingFragment StoreEntitySet="OwnerInfo">
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+                <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerPropertyDescriptions">
+            <EntityTypeMapping TypeName="PropertyStoreModel.OwnerPropertyDescription">
+              <MappingFragment StoreEntitySet="OwnerPropertyDescription">
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PropertyAge" ColumnName="PropertyAge" />
+                <ScalarProperty Name="SaleOrRentCost" ColumnName="SaleOrRentCost" />
+                <ScalarProperty Name="PropertySaleRentStatus" ColumnName="PropertySaleRentStatus" />
+                <ScalarProperty Name="PropertyDescription" ColumnName="PropertyDescription" />
+                <ScalarProperty Name="PropertyBuildupArea" ColumnName="PropertyBuildupArea" />
+                <ScalarProperty Name="TotalRooms" ColumnName="TotalRooms" />
+                <ScalarProperty Name="BedRoomNo" ColumnName="BedRoomNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+                <ScalarProperty Name="OwnerPropertyId" ColumnName="OwnerPropertyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
